@@ -69,6 +69,7 @@ function Speech() {
     setNote('')
   }
 
+
   return (
     <>
       <div className="container1">
@@ -78,16 +79,16 @@ function Speech() {
           <br/>
           <ButtonGroup aria-label="Basic example">
           <Button varient="outline-light" onClick={handleSaveNote} disabled={!note}>
-            Save Memo
+            Ask Question
           </Button>
           <Button variant="outline-light" onClick={() => setIsListening(prevState => !prevState)}>
-            Start/Stop
+            Begin
           </Button>
           </ButtonGroup>
           <p>{note}</p>
         </div>
         <div className="box">
-          <h2>Saved memos</h2>
+          <h2>Your Question:</h2>
           {savedNotes.map(n => (
             <p key={n}>{n}</p>
           ))}

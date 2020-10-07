@@ -39,10 +39,14 @@ class Control extends React.Component {
       <React.Fragment>
         <Container>
           <Row>
-            <Header/>
+            <Col>
+              <Header/>
+            </Col>
           </Row>
           <Row>
-            <Speech />
+            <Col>
+              <Speech />
+            </Col>
           </Row>
         </Container>
       </React.Fragment>
