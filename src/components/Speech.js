@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import {linkedEntityRecognition, keyPhraseExtraction, textAnalyticsClient} from './Sentiment';
+
+// const styleObject = {
+//     position: "top",
+//     marginTop: "5%",
+//     borderRadius: "10px",
+//     maxWidth: "600px",
+//     padding: "50px",
+//     paddingTop: "50px",
+//     background: "rgba(0, 45, 48, 0.5)",
+//     boxShadow: "x 50px 50px rgba(0, 255, 242, 0.5)",
+// }
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -51,22 +65,25 @@ function Speech() {
     setSavedNotes([...savedNotes, note])
     linkedEntityRecognition(textAnalyticsClient, [note]);
     keyPhraseExtraction(textAnalyticsClient, [note]);
+
     setNote('')
   }
 
   return (
     <>
-      <h1>What are you working on?</h1>
-      <div className="container">
-        <div className="box">
-          <h2>New Memo</h2>
-          {isListening ? <span>Hot </span> : <span>Off </span>}
-          <button onClick={handleSaveNote} disabled={!note}>
+      <div className="container1">
+        <div style={{textAlign: 'center'}} className="box">
+          <h1 style={{textAlign: 'center'}}>What are you working on?</h1>
+          {isListening ? <p>Hot </p> : <p>Off </p>}
+          <br/>
+          <ButtonGroup aria-label="Basic example">
+          <Button varient="primary" onClick={handleSaveNote} disabled={!note}>
             Save Memo
-          </button>
-          <button onClick={() => setIsListening(prevState => !prevState)}>
+          </Button>
+          <Button variant="danger" onClick={() => setIsListening(prevState => !prevState)}>
             Start/Stop
-          </button>
+          </Button>
+          </ButtonGroup>
           <p>{note}</p>
         </div>
         <div className="box">

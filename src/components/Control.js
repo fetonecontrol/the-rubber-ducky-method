@@ -1,10 +1,11 @@
 import React from "react";
-// import NewMemo from "./NewMemo";
-// import MemoList from "./MemoList";
-import { withFirestore, isLoaded } from "react-redux-firebase";
-import Button from "react-bootstrap/Button";
 import PropTypes from "prop-types";
-import SentimentAnalysis from './Sentiment'
+import { withFirestore, isLoaded } from "react-redux-firebase";
+import Header from './Header';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Button from "react-bootstrap/Button";
 
 import Speech from './Speech'
 
@@ -36,8 +37,14 @@ class Control extends React.Component {
 
     return (
       <React.Fragment>
-        {/* <Header/> */}
-          <Speech />
+        <Container>
+          <Row>
+            <Header/>
+          </Row>
+          <Row>
+            <Speech />
+          </Row>
+        </Container>
       </React.Fragment>
     );
   }
