@@ -74,13 +74,13 @@ function Speech() {
       <div className="container1">
         <div style={{textAlign: 'center'}} className="box">
           <h1 style={{textAlign: 'center'}}>What are you working on?</h1>
-          {isListening ? <p>Hot </p> : <p>Off </p>}
+          {isListening ? <p>Hot</p> : <p>Off</p>}
           <br/>
           <ButtonGroup aria-label="Basic example">
-          <Button varient="primary" onClick={handleSaveNote} disabled={!note}>
+          <Button varient="outline-light" onClick={handleSaveNote} disabled={!note}>
             Save Memo
           </Button>
-          <Button variant="danger" onClick={() => setIsListening(prevState => !prevState)}>
+          <Button variant="outline-light" onClick={() => setIsListening(prevState => !prevState)}>
             Start/Stop
           </Button>
           </ButtonGroup>
