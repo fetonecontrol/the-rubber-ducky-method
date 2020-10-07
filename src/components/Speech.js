@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Header from './Header';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import {linkedEntityRecognition, keyPhraseExtraction, textAnalyticsClient} from './Sentiment';
 
 const SpeechRecognition =
@@ -16,7 +20,7 @@ function Speech() {
   const [isListening, setIsListening] = useState(false)
   const [note, setNote] = useState(null)
   const [savedNotes, setSavedNotes] = useState([])
-  const [analtics, setAnalitics] = useState([])
+  const [analitics, setAnalitics] = useState([])
 
   useEffect(() => {
     handleListen()
@@ -51,40 +55,56 @@ function Speech() {
     }
   }
 
-  const handleSaveNote = () => {
+  async function handleSaveNote () {
     setSavedNotes([...savedNotes, note])
-    const result = linkedEntityRecognition(textAnalyticsClient, [note]);
-    console.log(result);
-    keyPhraseExtraction(textAnalyticsClient, [note]);
-
-    setNote('')
-  }
-
+    const keyPhraseResults = await keyPhraseExtraction(textAnalyticsClient, [note]);
+    const linkedEntityResults = await linkedEntityRecognition(textAnalyticsClient, [note]);
+    setAnalitics([...analitics, keyPhraseResults[0].keyPhrases])
+    console.log(linkedEntityResults)
+    console.log(keyPhraseResults)
+    // setAnalitics([...analitics, linkedEntityResults[0]])
+    //   result.map(document => {
+      //     console.log(`ID: ${document.id}`);
+      //     console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
+      // });
+      
+      setNote('')
+    }
+    function handleResponse () {
+      
+    }
 
   return (
     <>
       <div className="container2">
-        <div style={{textAlign: 'center'}} className="box">
-          <h1 style={{textAlign: 'center'}}>What are you working on?</h1>
-          {isListening ? <p>Hot</p> : <p>Off</p>}
-          <br/>
-          <ButtonGroup aria-label="Basic example">
-          <Button varient="outline-light" onClick={handleSaveNote} disabled={!note}>
-            Ask Question
-          </Button>
-          <Button variant="outline-light" onClick={() => setIsListening(prevState => !prevState)}>
-            Start/Stop
-          </Button>
-          </ButtonGroup>
-          <p>{note}</p>
-        </div>
-        <div className="box">
-          <h2>Your Question:</h2>
-          {savedNotes.map(n => (
-            <p key={n}>{n}</p>
-          ))}
-        </div>
+        <Container>
+          <Row></Row>
+            <div style={{textAlign: 'center'}} className="box">
+              <h1 style={{textAlign: 'center'}}>What are you working on?</h1>
+              {isListening ? <p>Hot</p> : <p>Off</p>}
+              <br/>
+              <ButtonGroup aria-label="Basic example">
+              <Button variant="outline-light" onClick={handleSaveNote} disabled={!note}>
+                Ask Question
+              </Button>
+              <Button variant="outline-light" onClick={() => setIsListening(prevState => !prevState)}>
+                Start/Stop
+              </Button>
+              </ButtonGroup>
+              <p>{note}</p>
+            </div>
+            <div className="box">
+              <h2>Your Question:</h2>
+              {savedNotes.map(n => (
+                <p key={n}>{n}</p>
+                ))}
+            </div>
+            <div className="box">
+              <h2>{handleResponse}</h2>
+            </div>
+        </Container>
       </div>
+
     </>
   )
 }

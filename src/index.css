@@ -38,7 +38,7 @@ code {
   align-items: center;
   margin-top: 5%;
   border-radius: 3px;
-  max-width: 600px;
+  max-width: 100%;
   padding: 30px;
   padding-top: 30px;
   background: rgba(12, 10, 10, 0.719);
