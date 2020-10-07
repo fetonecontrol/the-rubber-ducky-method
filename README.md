@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
 	
-![Image of Rubber](src/assets/rubberDuck.jpg)
+![Image of Rubber](src/assets/rubberDuck.png)
 <br>
 The Rubber Ducky Method
 </br>
@@ -31,9 +31,9 @@ The Rubber Ducky Method
 - Cross platform
 - Windows, macOS and Linux ready.
 
-## Wireframe Mockup
+<!-- ## Wireframe Mockup
 
-![component mockup](public/Ducky.jpg)
+![component mockup](public/Ducky.jpg) -->
 
 ## How To Use
 

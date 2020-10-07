@@ -6,7 +6,7 @@ import Header from './Header';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import {linkedEntityRecognition, keyPhraseExtraction, textAnalyticsClient} from './Sentiment';
+import {linkedEntityRecognition, keyPhraseExtraction, sentimentAnalysis, textAnalyticsClient} from './Sentiment';
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -59,7 +59,9 @@ function Speech() {
     setSavedNotes([...savedNotes, note])
     const keyPhraseResults = await keyPhraseExtraction(textAnalyticsClient, [note]);
     const linkedEntityResults = await linkedEntityRecognition(textAnalyticsClient, [note]);
+    const sentimentResults = await sentimentAnalysis(textAnalyticsClient, [note])
     setAnalitics([...analitics, keyPhraseResults[0].keyPhrases])
+    console.log(sentimentResults)
     console.log(linkedEntityResults)
     console.log(keyPhraseResults)
     // setAnalitics([...analitics, linkedEntityResults[0]])
@@ -78,8 +80,9 @@ function Speech() {
     <>
       <div className="container2">
         <Container>
-          <Row></Row>
+          <Row >
             <div style={{textAlign: 'center'}} className="box">
+              <h1 style={{textAlign: 'center', background: 'rgba(12, 10, 10, 0.719)', borderRadius: "5px", padding: "2%"}}> The Rubber Ducky Method </h1>
               <h1 style={{textAlign: 'center'}}>What are you working on?</h1>
               {isListening ? <p>Hot</p> : <p>Off</p>}
               <br/>
@@ -93,6 +96,7 @@ function Speech() {
               </ButtonGroup>
               <p>{note}</p>
             </div>
+          </Row>
             <div className="box">
               <h2>Your Question:</h2>
               {savedNotes.map(n => (

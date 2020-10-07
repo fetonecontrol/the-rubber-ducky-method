@@ -9,32 +9,34 @@ const key = API_KEY;
 const endpoint = END_POINT;
 
 export const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
-
+//entity report
 export async function linkedEntityRecognition(client, input){
 
     const entityResults = await client.recognizeLinkedEntities(input);
-    
-    // entityResults.forEach(document => {
-        // console.log((`Document ID: ${document.id}`));
-        // console.log(document);
-        // document.entities.forEach(entity => {
-        //     console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
-        //     console.log(`\tMatches:`)
-        //     entity.matches.forEach(match => {
-        //         console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
-        //     })
-        // });
-    // });
     return entityResults;
 }
-
+//key phrase extraction
 export async function keyPhraseExtraction(client, input){
 
     const keyPhraseResult = await client.extractKeyPhrases(input);
-    
-    // keyPhraseResult.forEach(document => {
-    //     // console.log(`ID: ${document.id}`);
-    //     // console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
-    // });
     return keyPhraseResult
+}
+//sentiment analysis
+export async function sentimentAnalysis(client, input){
+
+    const sentimentResult = await client.analyzeSentiment(input);
+
+    sentimentResult.forEach(document => {
+        console.log(`ID: ${document.id}`);
+        console.log(`\tDocument Sentiment: ${document.sentiment}`);
+        console.log(`\tDocument Scores:`);
+        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
+        console.log(`\tSentences Sentiment(${document.sentences.length}):`);
+        document.sentences.forEach(sentence => {
+            console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
+            console.log(`\t\tSentences Scores:`);
+            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
+        });
+    });
+    return sentimentResult;
 }
