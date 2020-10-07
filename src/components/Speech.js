@@ -4,17 +4,6 @@ import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import {linkedEntityRecognition, keyPhraseExtraction, textAnalyticsClient} from './Sentiment';
 
-// const styleObject = {
-//     position: "top",
-//     marginTop: "5%",
-//     borderRadius: "10px",
-//     maxWidth: "600px",
-//     padding: "50px",
-//     paddingTop: "50px",
-//     background: "rgba(0, 45, 48, 0.5)",
-//     boxShadow: "x 50px 50px rgba(0, 255, 242, 0.5)",
-// }
-
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
 const mic = new SpeechRecognition()
@@ -27,6 +16,7 @@ function Speech() {
   const [isListening, setIsListening] = useState(false)
   const [note, setNote] = useState(null)
   const [savedNotes, setSavedNotes] = useState([])
+  const [analtics, setAnalitics] = useState([])
 
   useEffect(() => {
     handleListen()
@@ -63,7 +53,8 @@ function Speech() {
 
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
-    linkedEntityRecognition(textAnalyticsClient, [note]);
+    const result = linkedEntityRecognition(textAnalyticsClient, [note]);
+    console.log(result);
     keyPhraseExtraction(textAnalyticsClient, [note]);
 
     setNote('')
@@ -72,7 +63,7 @@ function Speech() {
 
   return (
     <>
-      <div className="container1">
+      <div className="container2">
         <div style={{textAlign: 'center'}} className="box">
           <h1 style={{textAlign: 'center'}}>What are you working on?</h1>
           {isListening ? <p>Hot</p> : <p>Off</p>}
@@ -82,7 +73,7 @@ function Speech() {
             Ask Question
           </Button>
           <Button variant="outline-light" onClick={() => setIsListening(prevState => !prevState)}>
-            Begin
+            Start/Stop
           </Button>
           </ButtonGroup>
           <p>{note}</p>

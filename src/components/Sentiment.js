@@ -24,6 +24,7 @@ export async function linkedEntityRecognition(client, input){
         })
         });
     });
+    return entityResults;
 }
 
 export async function keyPhraseExtraction(client, input){
@@ -34,6 +35,7 @@ export async function keyPhraseExtraction(client, input){
         console.log(`ID: ${document.id}`);
         console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
     });
+    return keyPhraseResult
 } 
 // export async function sentimentAnalysisWithOpinionMining(client, input){
 
