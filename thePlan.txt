@@ -1,0 +1,64 @@
+## This is the plan.
+
+# The rubber ducky method
+
+## MVP
+
+* log user input (either speech to text or just text(speech to text preferable. Speaking outloud helps one hear themselves)
+* utilize speech to text API to translate user input.
+* utilize sentiment analisys API to interpret user input.
+* look for keywords associated with user input, log frequency in relation to pos/neg/neutral decoding.
+* provide %percent pos/neg/neutral interperitation of user input, per experience.
+* modify dom with cool colors and effects relevant to user input.
+
+
+## Sandbox 
+
+_Put Random Ideas here_
+* might pivot from general experiences to something that helps plan things or workout problems for people.
+* describe the problem.
+* describe what you know.
+* descreibe what you don't know.
+* describe what you might not not know you know.
+* Query respective DB's with structured search terms from user input
+* Decide on MVP of speech to text, and either analize either the speech, the text, or both, and store the information.
+
+
+## To-Do-List 9.25.20
+
+* Plan
+* Decide on process 
+* Outline Application
+* Gather external frameworks/libraries/tools
+
+## To-Do-List 9.26.20
+
+* Make Component Diagram
+* Record User Input with (https://www.npmjs.com/package/mic-recorder-to-mp3)
+* Send Audio to Google Speech to Text
+* Run Sentiment Analisys with Microsoft API 
+* Display basic sentiment analytics on page
+* _Stretch Goal:_
+* Graphing
+* UI/Styling, responsive UX.
+
+
+## potentially useful APIs and other information
+
+_Batch writing to firebase_
+* https://firebase.google.com/docs/firestore/manage-data/transactions
+
+_helpful video on firebase_
+* https://www.youtube.com/watch?v=lW7DWV2jST0
+
+_Microsoft Text Sentiment Aanalizer_
+* https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-text-analytics1?endpoint=apiendpoint_4d5fc42b-bea9-466f-8ad9-9824b4b92934
+
+_Google Speech to Text_
+ * (https://cloud.google.com/speech-to-text/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-skws-all-all-trial-p-dr-1009135&utm_content=text-ad-none-any-DEV_c-CRE_438264225815-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+%7C+US+%7C+en+%7C+PHR+~+ML/AI+~+Speech+API+~+Speech+to+Text+~+Speech+To+Text-KWID_43700036255048137-kwd-475797938054&utm_term=KW_speech%20to%20text-ST_Speech+To+Text&gclid=Cj0KCQjwqrb7BRDlARIsACwGad5UYtjEzsRiGvN1FYUXPKd6Nup9HaV9fC_W5FthwFDGUawUYCEJAnMaAhI3EALw_wcB)
+
+_Twilio Speech to Text_
+* (https://www.twilio.com/speech-recognition?utm_source=google&utm_medium=cpc&utm_term=&utm_campaign=G_S_NAMER_NB_Voice_IVR_US&CA=&campaignid=1634734928&adgroupid=102441055438&adid=436338093773&gclid=Cj0KCQjwqrb7BRDlARIsACwGad7MpFRRHSbw_kCvZDALd8Be-TWY1qVlxrwRw3Al6SK2lTgRQqTDagsaAhl6EALw_wcB&gclsrc=aw.ds
+)
+_Google Maps API_
+* (https://developers.google.com/maps/documentation/geocoding/overview?csw=1)
