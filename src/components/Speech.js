@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {opinionMining, textAnalyticsClient} from './Sentiment';
+import {linkedEntityRecognition, textAnalyticsClient} from './Sentiment';
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -50,7 +50,7 @@ function Speech() {
 
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
-    opinionMining(textAnalyticsClient, [note]);
+    linkedEntityRecognition(textAnalyticsClient, [note]);
     // console.log(savedNotes);
     setNote('')
   }
