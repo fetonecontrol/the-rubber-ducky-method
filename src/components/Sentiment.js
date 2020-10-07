@@ -26,4 +26,12 @@ export async function linkedEntityRecognition(client, input){
     });
 }
 
-// sentimentAnalysis(textAnalyticsClient)
+export async function keyPhraseExtraction(client, input){
+
+    const keyPhraseResult = await client.extractKeyPhrases(input);
+    
+    keyPhraseResult.forEach(document => {
+        console.log(`ID: ${document.id}`);
+        console.log(`\tDocument Key Phrases: ${document.keyPhrases}`);
+    });
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {linkedEntityRecognition, textAnalyticsClient} from './Sentiment';
+import {linkedEntityRecognition, keyPhraseExtraction, textAnalyticsClient} from './Sentiment';
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -40,7 +40,6 @@ function Speech() {
         .map(result => result[0])
         .map(result => result.transcript)
         .join('')
-      console.log(transcript)
       setNote(transcript)
       mic.onerror = event => {
         console.log(event.error)
@@ -51,7 +50,7 @@ function Speech() {
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
     linkedEntityRecognition(textAnalyticsClient, [note]);
-    // console.log(savedNotes);
+    keyPhraseExtraction(textAnalyticsClient, [note]);
     setNote('')
   }
 
