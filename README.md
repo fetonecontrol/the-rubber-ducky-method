@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
 	
-![Image of Rubber](https://images.app.goo.gl/pyRzewbsoz1ca2Pi8)
+![Image of Rubber](src/assets/rubberDuck.jpg)
 <br>
 The Rubber Ducky Method
 </br>
