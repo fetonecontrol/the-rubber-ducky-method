@@ -71,9 +71,9 @@ function Speech() {
       sentimentResults[0].confidenceScores.neutral.toFixed(2),
       sentimentResults[0].confidenceScores.negative.toFixed(2)
     ])
-    console.log(ratings[0])
-    console.log(linkedEntityResults[0])
-    console.log(keyPhraseResults[0])
+    // console.log(ratings[0])
+    // console.log(linkedEntityResults[0])
+    // console.log(keyPhraseResults[0])
     // setAnalitics([...analitics, linkedEntityResults[0]])
     //   result.map(document => {
       //     console.log(`ID: ${document.id}`);
@@ -83,9 +83,10 @@ function Speech() {
       setNote('')
     }
 
-    function handleResponse () {
+  function handleResponse () {
       if (ratings[0] > ratings[1] && ratings[0] > ratings [2] ){
-        const response = "It sounds like you have a good grasp on {analytics[0]}"
+        console.log(ratings[0])
+        const response = "It sounds like you have a good grasp on " + analytics[0] + "."
         return response
       } else if (ratings[1] > ratings[0] && ratings[1] > ratings [2] ){
         const response = "What do you know you don't know about " + analytics[0] + "?"
@@ -98,10 +99,11 @@ function Speech() {
         return response
       }
     }
+  const a = handleResponse();
+  console.log(a);
+    // console.log(analytics)
+    // console.log(ratings[0])
 
-    console.log(analytics)
-    console.log(ratings[0])
-    
   return (
     <>
       <div className="container2">
@@ -130,7 +132,7 @@ function Speech() {
                 ))}
             </div>
             <div className="box">
-              <h2>{handleResponse}</h2>
+              <h2>{handleResponse()}</h2>
             </div>
         </Container>
       </div>
