@@ -22,6 +22,7 @@ function Speech() {
   const [savedNotes, setSavedNotes] = useState([])
   const [analytics, setAnalitics] = useState([])
   const [ratings, setRatings] = useState([])
+  const [response, setResponse] = useState([])
 
   useEffect(() => {
     handleListen()
@@ -55,6 +56,22 @@ function Speech() {
       }
     }
   }
+  function handleResponse () {
+    if (ratings[0] > ratings[1] && ratings[0] > ratings [2] ){
+      // console.log(ratings[0])
+      const response = "It sounds like you have a good grasp on " + analytics[0] + "."
+      return response
+    } else if (ratings[1] > ratings[0] && ratings[1] > ratings [2] ){
+      const response = "What do you know you don't know about " + analytics[0] + "?"
+      return response
+    } else if (ratings[2] > ratings[1] && ratings[2] > ratings [0] ){
+      const response = "What do you know you don't know about " + analytics[0] + "?"
+      return response
+    } else {
+      const response = "can you tell me more about " + analytics[0] + "?"
+      return response
+    }
+  }
 
   async function handleSaveNote () {
     setSavedNotes([...savedNotes, note])
@@ -62,7 +79,9 @@ function Speech() {
     const keyPhraseResults = await keyPhraseExtraction(textAnalyticsClient, [note]);
     const linkedEntityResults = await linkedEntityRecognition(textAnalyticsClient, [note]);
     const sentimentResults = await sentimentAnalysis(textAnalyticsClient, [note])
+    const answer = await handleResponse();
     //set objects
+    setResponse(answer)
     setAnalitics(keyPhraseResults[0].keyPhrases)
     
     //set ratings
@@ -83,24 +102,8 @@ function Speech() {
       setNote('')
     }
 
-  function handleResponse () {
-      if (ratings[0] > ratings[1] && ratings[0] > ratings [2] ){
-        console.log(ratings[0])
-        const response = "It sounds like you have a good grasp on " + analytics[0] + "."
-        return response
-      } else if (ratings[1] > ratings[0] && ratings[1] > ratings [2] ){
-        const response = "What do you know you don't know about " + analytics[0] + "?"
-        return response
-      } else if (ratings[2] > ratings[1] && ratings[2] > ratings [0] ){
-        const response = "What do you know you don't know about " + analytics[0] + "?"
-        return response
-      } else {
-        const response = "can you tell me more about " + analytics[0] + "?"
-        return response
-      }
-    }
-  const a = handleResponse();
-  console.log(a);
+  // const a = handleResponse();
+  // console.log(a);
     // console.log(analytics)
     // console.log(ratings[0])
 
@@ -132,7 +135,7 @@ function Speech() {
                 ))}
             </div>
             <div className="box">
-              <h2>{handleResponse()}</h2>
+              <h2>{response}</h2>
             </div>
         </Container>
       </div>
