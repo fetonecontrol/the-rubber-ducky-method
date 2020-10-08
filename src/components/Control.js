@@ -37,6 +37,7 @@ class Control extends React.Component {
 
     return (
       <React.Fragment>
+        <img src="../assets/rubberDuck.png"></img>
         <Container>
           <Row>
             <Col>

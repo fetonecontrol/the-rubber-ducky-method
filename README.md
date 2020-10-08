@@ -71,6 +71,8 @@ This software uses the following technologies:
 - React (JSX)
 - Firebase/Firestore
 - CSS (Bootstrap)
+- Browser native speech to text
+- Microsoft Azure Sentiment Analysis
 - Git versioning
 
 ## Support

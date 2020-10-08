@@ -10,7 +10,6 @@ import Row from 'react-bootstrap/Row';
 function Header () {
   return (
     <React.Fragment>
-    <im src={rubberDuck} alt="ducky"/>
     {/* <h1 style={{textAlign: 'center'}}>The Rubber Ducky Method</h1>
       <ButtonGroup aria-label="Basic example">
         <Button variant="outline-light">
