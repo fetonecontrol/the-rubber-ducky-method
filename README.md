@@ -22,18 +22,19 @@ The Rubber Ducky Method
 
 - Track User Problems/Successes/Experiences
 - Translate Speech to text for storage and Analysis.
-- Add new Experience to database
 - Provide useful metrics for experiences, based on sentiment analysis and word frequency.
-- See all Experiences
-- Edit or Delete Experience
 - Mobile Responsive Site
 
 - Cross platform
 - Windows, macOS and Linux ready.
 
-<!-- ## Wireframe Mockup
+## Stretch Goals
 
-![component mockup](public/Ducky.jpg) -->
+- Provide tailored AI responses to users
+- Catalogue all user experinces for better problem solving 
+- See all Experiences
+- Add new Experience to database
+- Edit or Delete Experience
 
 ## How To Use
 
